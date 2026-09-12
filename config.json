@@ -1,0 +1,31 @@
+{
+    "panels": {
+        "1044c858": {
+            "title": "test",
+            "description": "test",
+            "button_label": "ouvrire",
+            "category_id": 1547666896533459044,
+            "staff_role_id": 1546200463463153716,
+            "guild_id": 1545735691323834368,
+            "message_id": 1547667186389094411,
+            "channel_id": 1547666999331520512
+        },
+        "23d8f800": {
+            "title": "Candidature doublage",
+            "description": "Si tu veux faire du doublage sur le film de Délaro",
+            "button_label": "Ouvrire",
+            "category_id": 1547668074428108961,
+            "staff_role_id": 1547668236613582960,
+            "guild_id": 1489941213623619666,
+            "message_id": 1547668348761022496,
+            "channel_id": 1546158570624655471
+        }
+    },
+    "tickets": {
+        "1547667352630595684": {
+            "panel_id": "1044c858",
+            "user_id": 1513557906115657890,
+            "staff_role_id": 1546200463463153716
+        }
+    }
+}

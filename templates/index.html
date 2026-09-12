@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Mes bots Discord</h2>
+    <a href="{{ url_for('add_bot') }}" class="btn btn-primary">+ Ajouter un bot</a>
+</div>
+
+<table class="table table-dark table-striped align-middle">
+    <thead>
+    <tr><th>Nom</th><th>Statut</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+    {% for bot in bots %}
+    <tr>
+        <td>{{ bot.name }}</td>
+        <td>
+            {% if bot.status == "running" %}
+                <span class="badge bg-success">En ligne</span>
+            {% elif bot.status == "error" %}
+                <span class="badge bg-danger" title="{{ bot.error }}">Erreur</span>
+            {% else %}
+                <span class="badge bg-secondary">Hors ligne</span>
+            {% endif %}
+        </td>
+        <td class="d-flex gap-2">
+            {% if bot.status == "running" %}
+                <form method="post" action="{{ url_for('stop_bot_route', bot_id=bot.id) }}">
+                    <button class="btn btn-sm btn-warning">Arrêter</button>
+                </form>
+            {% else %}
+                <form method="post" action="{{ url_for('start_bot_route', bot_id=bot.id) }}">
+                    <button class="btn btn-sm btn-success">Démarrer</button>
+                </form>
+            {% endif %}
+            <a href="{{ url_for('edit_bot', bot_id=bot.id) }}" class="btn btn-sm btn-info">Modifier</a>
+            <form method="post" action="{{ url_for('delete_bot_route', bot_id=bot.id) }}"
+                  onsubmit="return confirm('Supprimer ce bot ?');">
+                <button class="btn btn-sm btn-danger">Supprimer</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3" class="text-center">Aucun bot configuré.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
